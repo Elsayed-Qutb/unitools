@@ -126,7 +126,7 @@ export default function SignUpSide() {
           >
             <div class="flex gap-2 items-center">Create Account</div>
           </button>
-          <button onClick={() => navigate("/signin")}
+          <button onClick={() => navigate("/Home")}
             class="w-fit rounded-lg text-sm px-5 py-2 focus:outline-none h-[50px] border bg-transparent  text-primary focus:ring-2 focus:ring-gray-200 hover:bg-black hover:text-white  transition-all duration-300 "
             type="button"
           >

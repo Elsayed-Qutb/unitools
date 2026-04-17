@@ -31,7 +31,7 @@ export default function Footer() {
             </Link>
           </div>
 
-          <div className=" flex flex-col gap-1 lg:gap-2 p-.5">
+          <div className=" flex flex-col gap-.5 lg:gap-2 p-.5">
             <h1 className="font-semibold text-[18px] px-2 ">Contact Us</h1>
             <h1 className="text-gray-600 p-2 ">
               Unitool@Gmail.com

@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./Pages/Home";
 import SignInSide from "./Pages/SignInSide";
 import SignUpSide from "./Pages/SignUpSide";
+import Profile from "./Pages/Profile";
 
 export default function App() {
   return (
@@ -11,6 +12,7 @@ export default function App() {
         <Route path="/signin" element={<SignInSide />} />
         <Route path="/signUP" element={<SignUpSide />} />
         <Route path="/Home" element={<Home />} />
+        <Route path="/profile" element={<Profile />} />
         
       </Routes>
     </Router>
