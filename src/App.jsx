@@ -1,13 +1,18 @@
-import BrowseCategories from "./BrowseCategories";
-import Header from "./Header";
-import Sectionone from "./Sectionone";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Home from "./Pages/Home";
+import SignInSide from "./Pages/SignInSide";
+import SignUpSide from "./Pages/SignUpSide";
 
 export default function App() {
   return (
-    <div>
-      <Header />
-      <Sectionone></Sectionone>
-      <BrowseCategories />
-    </div>
+   <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/signin" element={<SignInSide />} />
+        <Route path="/signUP" element={<SignUpSide />} />
+        <Route path="/Home" element={<Home />} />
+        
+      </Routes>
+    </Router>
   )
 }

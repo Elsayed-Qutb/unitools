@@ -1,24 +1,27 @@
-import React from "react";
 import { Sparkle } from 'lucide-react';
 
 export default function Sectionone() {
   return (
     <div>
-      <section className="bg-[#4b54d4] flex justify-center">
-        <div className="container flex justify-center">
-          <div className=" text-white w-[70%] flex flex-col justify-center items-center py-19 gap-5">
+      <section className="bg-blue-800 flex justify-center">
+        <div className="container flex justify-center p-5 lg:p-11">
+          <div className="bg-blue-800 text-white w-[95%] lg:w-[70%] flex flex-col justify-center items-center py-10 gap-7 rounded-3xl border-2 border-white">
+
             <div className="flex items-center justify-center gap-2">
                <Sparkle />
               <p className="font-bold">Student Marketplace</p>
             </div>
-            <h1 className="text-[50px] font-bold text-center">
+
+            <h1 className=" text-[28px] lg:text-[50px] font-bold text-center">
               Quality Study Tools at <br></br> Student Prices
             </h1>
-            <p className="font-medium text-[17px]">
+
+            <p className="font-medium text-center text-[14px] lg:text-[17px]">
               Buy, sell, and rent engineering tools, textbooks, lab equipment,
               and more from fellow students.
             </p>
-            <div class="flex items-center border-2 w-100 focus-within:border-black transition duration-300 pr-3 gap-2 bg-white border-gray-500/30 h-[46px] rounded-[5px] overflow-hidden">
+
+            <div class="flex items-center border-2 w-67 lg:w-100 focus-within:border-black transition duration-300 pr-3 gap-2 bg-white border-gray-500/30 h-[46px] rounded-[5px] overflow-hidden">
               <input
                 type="text"
                 placeholder="Search for products"
