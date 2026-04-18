@@ -1,9 +1,58 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-
+import { useState } from "react";
 
 export default function SignUpSide() {
-   const navigate = useNavigate();
+  const navigate = useNavigate();
+
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [university, setUniversity] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [image, setImage] = useState("");
+  const handleImage = (file) => {
+  const reader = new FileReader();
+
+    reader.onloadend = () => {
+      setImage(reader.result);
+    };
+
+    reader.readAsDataURL(file);
+  };
+
+  const handleSubmit = () => {
+    if (
+      !name ||
+      !email ||
+      !phone ||
+      !university ||
+      !password ||
+      !confirmPassword
+    ) {
+      alert("Please fill all fields ");
+      return;
+    }
+
+    if (password !== confirmPassword) {
+      alert("Passwords do not match ");
+      return;
+    }
+
+    const user = {
+      name,
+      email,
+      phone,
+      university,
+      password,
+      image,
+    };
+
+    localStorage.setItem("user", JSON.stringify(user));
+
+    navigate("/profile");
+  };
   return (
     <div>
       <div class="p-4 lg:p-10">
@@ -25,109 +74,78 @@ export default function SignUpSide() {
             <div id="input" class="relative">
               <input
                 type="text"
-                id="floating_outlined"
-                class="block w-full text-sm h-[50px] px-4 text-slate-900 bg-white rounded-[8px] border border-blue-200 appearance-none focus:border-transparent focus:outline focus:outline-2 focus:outline-primary focus:ring-0 hover:border-brand-500-secondary- peer invalid:border-error-500 invalid:focus:border-error-500 overflow-ellipsis overflow-hidden text-nowrap pr-[48px]"
+                onChange={(e) => setName(e.target.value)}
+                class="block w-full text-sm h-[50px] px-4 bg-white rounded-[8px] border border-blue-200"
                 placeholder="Full name"
-                
               />
-              <label
-                for="floating_outlined"
-                class="peer-placeholder-shown:-z-10 peer-focus:z-10 absolute text-[14px] leading-[150%] text-primary peer-focus:text-primary peer-invalid:text-error-500 focus:invalid:text-error-500 duration-300 transform -translate-y-[1.2rem] scale-75 top-2 z-10 origin-[0] bg-white disabled:bg-gray-50-background- px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-[1.2rem] rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1"
-              >
-                Full name
-              </label>
             </div>
 
             <div id="input" class="relative">
               <input
                 type="email"
-                id="floating_outlined"
-                class="block w-full text-sm h-[50px] px-4 text-slate-900 bg-white rounded-[8px] border border-blue-200 appearance-none focus:border-transparent focus:outline focus:outline-2 focus:outline-primary focus:ring-0 hover:border-brand-500-secondary- peer invalid:border-error-500 invalid:focus:border-error-500 overflow-ellipsis overflow-hidden text-nowrap pr-[48px]"
+                onChange={(e) => setEmail(e.target.value)}
+                class="block w-full text-sm h-[50px] px-4 bg-white rounded-[8px] border border-blue-200"
                 placeholder="E-mail"
-                disabled=""
               />
-              <label
-                for="floating_outlined"
-                class="peer-placeholder-shown:-z-10 peer-focus:z-10 absolute text-[14px] leading-[150%] text-primary peer-focus:text-primary peer-invalid:text-error-500 focus:invalid:text-error-500 duration-300 transform -translate-y-[1.2rem] scale-75 top-2 z-10 origin-[0] bg-white disabled:bg-gray-50-background- px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-[1.2rem] rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1"
-              >
-                E-mail
-              </label>
-            </div>
-            <div id="input" class="relative">
-              <input
-                type="phone"
-                id="floating_outlined"
-                class="block w-full text-sm h-[50px] px-4 text-slate-900 bg-white rounded-[8px] border border-blue-200 appearance-none focus:border-transparent focus:outline focus:outline-2 focus:outline-primary focus:ring-0 hover:border-brand-500-secondary- peer invalid:border-error-500 invalid:focus:border-error-500 overflow-ellipsis overflow-hidden text-nowrap pr-[48px]"
-                placeholder="Phone"
-                
-              />
-              <label
-                for="floating_outlined"
-                class="peer-placeholder-shown:-z-10 peer-focus:z-10 absolute text-[14px] leading-[150%] text-primary peer-focus:text-primary peer-invalid:text-error-500 focus:invalid:text-error-500 duration-300 transform -translate-y-[1.2rem] scale-75 top-2 z-10 origin-[0] bg-white disabled:bg-gray-50-background- px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-[1.2rem] rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1"
-              >
-                Phone
-              </label>
             </div>
 
             <div id="input" class="relative">
               <input
                 type="text"
-                id="floating_outlined"
-                class="block w-full text-sm h-[50px] px-4 text-slate-900 bg-white rounded-[8px] border border-blue-200 appearance-none focus:border-transparent focus:outline focus:outline-2 focus:outline-primary focus:ring-0 hover:border-brand-500-secondary- peer invalid:border-error-500 invalid:focus:border-error-500 overflow-ellipsis overflow-hidden text-nowrap pr-[48px]"
-                placeholder="University  name"
-                
+                onChange={(e) => setPhone(e.target.value)}
+                class="block w-full text-sm h-[50px] px-4 bg-white rounded-[8px] border border-blue-200"
+                placeholder="Phone"
               />
-              <label
-                for="floating_outlined"
-                class="peer-placeholder-shown:-z-10 peer-focus:z-10 absolute text-[14px] leading-[150%] text-primary peer-focus:text-primary peer-invalid:text-error-500 focus:invalid:text-error-500 duration-300 transform -translate-y-[1.2rem] scale-75 top-2 z-10 origin-[0] bg-white disabled:bg-gray-50-background- px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-[1.2rem] rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1"
-              >
-                University name
-              </label>
+            </div>
+
+            <div id="input" class="relative">
+              <input
+                type="text"
+                onChange={(e) => setUniversity(e.target.value)}
+                class="block w-full text-sm h-[50px] px-4 bg-white rounded-[8px] border border-blue-200"
+                placeholder="University name"
+              />
             </div>
 
             <div id="input" class="relative">
               <input
                 type="password"
-                id="floating_outlined"
-                class="block w-full text-sm h-[50px] px-4 text-slate-900 bg-white rounded-[8px] border border-blue-200 appearance-none focus:border-transparent focus:outline focus:outline-2 focus:outline-primary focus:ring-0 hover:border-brand-500-secondary- peer invalid:border-error-500 invalid:focus:border-error-500 overflow-ellipsis overflow-hidden text-nowrap pr-[48px]"
-                placeholder="password"
-              
+                onChange={(e) => setPassword(e.target.value)}
+                class="block w-full text-sm h-[50px] px-4 bg-white rounded-[8px] border border-blue-200"
+                placeholder="Password"
               />
-              <label
-                for="floating_outlined"
-                class="peer-placeholder-shown:-z-10 peer-focus:z-10 absolute text-[14px] leading-[150%] text-primary peer-focus:text-primary peer-invalid:text-error-500 focus:invalid:text-error-500 duration-300 transform -translate-y-[1.2rem] scale-75 top-2 z-10 origin-[0] bg-white disabled:bg-gray-50-background- px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-[1.2rem] rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1"
-              >
-                password
-              </label>
             </div>
-
             <div id="input" class="relative">
               <input
                 type="password"
-                id="floating_outlined"
-                class="block w-full text-sm h-[50px] px-4 text-slate-900 bg-white rounded-[8px] border border-blue-200 appearance-none focus:border-transparent focus:outline focus:outline-2 focus:outline-primary focus:ring-0 hover:border-brand-500-secondary- peer invalid:border-error-500 invalid:focus:border-error-500 overflow-ellipsis overflow-hidden text-nowrap pr-[48px]"
+                onChange={(e) => setConfirmPassword(e.target.value)}
+                class="block w-full text-sm h-[50px] px-4 bg-white rounded-[8px] border border-blue-200"
                 placeholder="Confirm Password"
-                
               />
-              <label
-                for="floating_outlined"
-                class="peer-placeholder-shown:-z-10 peer-focus:z-10 absolute text-[14px] leading-[150%] text-primary peer-focus:text-primary peer-invalid:text-error-500 focus:invalid:text-error-500 duration-300 transform -translate-y-[1.2rem] scale-75 top-2 z-10 origin-[0] bg-white disabled:bg-gray-50-background- px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-[1.2rem] rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1"
-              >
-                Confirm Password
-              </label>
+            </div>
+            <div id="input" class="relative">
+              <input
+                type="file"
+                accept="image/*"
+                onChange={(e) => handleImage(e.target.files[0])}
+                class="block w-full text-sm h-[50px] px-4 bg-white rounded-[8px] border border-blue-200"
+              />
             </div>
           </div>
         </div>
 
         <div class="sm:flex flex-row-reverse flex justify-center gap-4">
           <button
-            class="w-fit rounded-lg text-sm px-5 py-2 focus:outline-none h-[50px] border bg-blue-700 hover:bg-black text-white focus:ring-2 focus:ring-black hover:ring-2 transition-all duration-300"
+            onClick={handleSubmit}
+            className="w-fit rounded-lg text-sm px-5 py-2 h-[50px] bg-blue-700 hover:bg-black text-white"
             type="button"
           >
-            <div class="flex gap-2 items-center">Create Account</div>
+            Create Account
           </button>
-          <button onClick={() => navigate("/Home")}
-            class="w-fit rounded-lg text-sm px-5 py-2 focus:outline-none h-[50px] border bg-transparent  text-primary focus:ring-2 focus:ring-gray-200 hover:bg-black hover:text-white  transition-all duration-300 "
+
+          <button
+            onClick={() => navigate("/Home")}
+            class="w-fit rounded-lg text-sm px-5 py-2 h-[50px] border hover:bg-black hover:text-white"
             type="button"
           >
             Cancel

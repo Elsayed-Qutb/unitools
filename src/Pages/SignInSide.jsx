@@ -1,12 +1,14 @@
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
+
 import google from "../assets/google.svg";
 import facebook1 from "../assets/facebook1.svg";
 import Header from "../components/Header";
 
 export default function SignInSide() {
   const navigate = useNavigate();
+  
   return (
     <div className="flex justify-center items-center p-1.5 lg:p-8 ">
 

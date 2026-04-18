@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 
 export default function Footer() {
+
   return (
     <div>
       <section className="flex justify-center p-2 shadow-sm shadow-black mt-5">
